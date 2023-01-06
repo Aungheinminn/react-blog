@@ -1,0 +1,29 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.title{
+    font-size: 30px;
+    color: skyblue;
+    margin: 15px 0 5px 0;
+}
+.subtitle{
+    font-size: 40px;
+    color: skyblue;
+    margin-bottom: 5px;
+}
+.spn{
+    opacity: .5;
+    color: grey;
+}
+.p{
+    font-weight: bold;
+    color: black;
+    opacity: .3;
+}
