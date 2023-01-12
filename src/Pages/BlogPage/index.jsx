@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link, useParams } from "react-router-dom";
 import EmptyList from "../../components/BlogList/EmptyList";
 import { blogList } from "../../config/data";
@@ -6,15 +6,7 @@ import classes from "./style.module.css";
 
 const BlogPage = () =>{
     const {id} = useParams();
-    const [blog,setBlog] = useState(null);
-    useEffect(()=>{
-        let blogId = blogList.find(blog => blog.id === parseInt(id));
-        // let blog = blogList.filter((blog) => blog.id === parseInt(id));
-        // if(blog){
-            setBlog(blogId);
-           
-        // }
-    }, []);
+    let blog = blogList.find(blog => blog.id === parseInt(id)) ?? null;
     
     return(
 
