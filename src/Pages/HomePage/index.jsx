@@ -3,31 +3,38 @@ import classes from './style.module.css'
 import BlogList from '../../components/BlogList'
 import Header from '../../components/Header'
 import SearchBar from '../../components/SearchBar'
-import { blogList } from '../../config/data'
+// import { blogList } from '../../config/data'
 import EmptyList from '../../components/BlogList/EmptyList'
+import { useEffect } from 'react'
 
 const HomePage = () => {
-  const [blogs, setBlogs] = useState(blogList)
+  const [datas, setData] = useState([])
+  const getApi = async () => {
+    const res = await fetch('http://localhost:8000/api/article')
+    const datas = await res.json()
+    setData(datas)
+  }
+  useEffect(() => {
+    getApi()
+  }, [])
   const [search, setSearch] = useState('')
 
   const handleSearchSubmit = (e) => {
     e.preventDefault()
-    handleSearchBlog()
+    handleAllSearch()
   }
-  const handleSearchBlog = () => {
-    const allBlogs = blogList
-
-    const filterBlog = allBlogs.filter((blog) =>
-      blog.category.toLowerCase().includes(search.toLowerCase().trim())
+  const handleAllSearch = () => {
+    const allBlog = datas
+    const filterBlog = allBlog.filter((data) =>
+      data.category.toLowerCase().includes(search.toLowerCase().trim())
     )
-
-    setBlogs(filterBlog)
+    setData(filterBlog)
   }
   const handleClearSearch = () => {
-    setBlogs(blogList)
     setSearch('')
+    // setData(datas)
+    getApi()
   }
-
   return (
     <div className={classes.container}>
       <Header />
@@ -37,10 +44,9 @@ const HomePage = () => {
         handleSearch={(e) => setSearch(e.target.value)}
         clearSearch={handleClearSearch}
       />
-      {blogs.length ? <BlogList blogs={blogs} /> : <EmptyList />}
-      {/* <EmptyList />  */}
+      {/* <BlogList blogs={datas} /> */}
+      {datas.length ? <BlogList blogs={datas} /> : <EmptyList />}
     </div>
   )
 }
-
 export default HomePage

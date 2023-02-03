@@ -3,6 +3,7 @@ import classes from './App.module.css'
 import HomePage from './Pages/HomePage'
 import { Route, Routes } from 'react-router-dom'
 import BlogPage from './Pages/BlogPage'
+import Test from './components/Test/Test'
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/blog/:id" element={<BlogPage />} />
+        <Route path="/test" element={<Test />} />
       </Routes>
     </div>
   )
