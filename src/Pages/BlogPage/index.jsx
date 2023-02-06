@@ -1,30 +1,51 @@
 import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import EmptyList from '../../components/BlogList/EmptyList'
 // import { blogList } from '../../config/data'
 import classes from './style.module.css'
+import { getApi } from '../../config/apiData'
 
 const BlogPage = () => {
   const [datas, setData] = useState([])
-  const getApi = async () => {
-    const res = await fetch('http://localhost:8000/api/article')
-    const datas = await res.json()
-    setData(datas)
-  }
+  const { id } = useParams()
+  const navigate = useNavigate()
+
+  // const getApi = async () => {
+  //   const res = await fetch('http://localhost:8000/api/article')
+  //   const datas = await res.json()
+  //   setData(datas)
+  // }
   useEffect(() => {
     getApi()
+      .then((res) => res.json())
+      .then((data) => setData(data))
   }, [])
-  const { id } = useParams()
   let blog = datas.find((blog) => blog.id === parseInt(id)) ?? null
+
+  const handleDelete = () => {
+    // const url = 'http://localhost/api/article/' + id;
+    fetch('http://localhost:8000/api/article/' + id, {
+      method: 'DELETE'
+    })
+    // console.log(url)
+    navigate('/')
+    getApi()
+  }
+  // useEffect(()=>{
+  //   handleDelete()
+  // })
 
   return (
     <div className={classes.main}>
-      <div>
+      <div className={classes.btns}>
         <Link to="/" className={classes.link}>
           Go Back
         </Link>
+        <button className={classes.delete} onClick={handleDelete}>
+          Delete
+        </button>
       </div>
       {blog ? (
         <div className={classes.blogContainer}>

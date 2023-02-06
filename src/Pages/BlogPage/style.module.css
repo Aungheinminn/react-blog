@@ -43,12 +43,32 @@
   font-size: 15px;
   background-color: skyblue;
 }
+.btns {
+  width: 100%;
+  margin-top: 10px;
+  justify-content: start;
+}
 .link {
   text-decoration: none;
-  color: grey;
+  color: gray;
   font-size: 20px;
   margin-left: 10px;
-  display: block;
+  display: inline;
+  padding: 5px;
+}
+.delete {
+  text-decoration: none;
+  color: red;
+  font-size: 20px;
+  margin-left: 10px;
+  display: inline;
+  border: none;
+  background-color: white;
+  /* padding: 5px; */
+  transition: all 1s;
+}
+.delete:hover {
+  border-bottom: 2px solid red;
 }
 .cover {
   width: 600px;

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import classes from './style.module.css'
 
 const SearchBar = ({ value, handleSearch, clearSearch, formSubmit }) => {
@@ -9,6 +10,7 @@ const SearchBar = ({ value, handleSearch, clearSearch, formSubmit }) => {
           <input
             type="text"
             onChange={handleSearch}
+            // onChange={handleReset}
             placeholder="Search By Category"
             value={value}
             className={classes.input}
@@ -19,9 +21,13 @@ const SearchBar = ({ value, handleSearch, clearSearch, formSubmit }) => {
               x
             </span>
           )}
+
           {/* <button className={classes.btn}>Go</button> */}
         </form>
       </div>
+      <Link className={classes.icon} to={'/add'}>
+        +
+      </Link>
     </div>
   )
 }

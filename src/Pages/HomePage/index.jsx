@@ -6,16 +6,15 @@ import SearchBar from '../../components/SearchBar'
 // import { blogList } from '../../config/data'
 import EmptyList from '../../components/BlogList/EmptyList'
 import { useEffect } from 'react'
+import { getApi } from '../../config/apiData'
 
 const HomePage = () => {
   const [datas, setData] = useState([])
-  const getApi = async () => {
-    const res = await fetch('http://localhost:8000/api/article')
-    const datas = await res.json()
-    setData(datas)
-  }
+
   useEffect(() => {
     getApi()
+      .then((res) => res.json())
+      .then((data) => setData(data))
   }, [])
   const [search, setSearch] = useState('')
 
@@ -30,6 +29,7 @@ const HomePage = () => {
     )
     setData(filterBlog)
   }
+
   const handleClearSearch = () => {
     setSearch('')
     // setData(datas)
@@ -41,6 +41,7 @@ const HomePage = () => {
       <SearchBar
         value={search}
         formSubmit={handleSearchSubmit}
+        // handleReset={handleBlogReset}
         handleSearch={(e) => setSearch(e.target.value)}
         clearSearch={handleClearSearch}
       />

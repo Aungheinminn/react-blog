@@ -37,3 +37,15 @@
   cursor: pointer;
   font-weight: bold;
 }
+.icon {
+  height: 30px;
+  text-decoration: none;
+  font-size: 25px;
+  font-weight: bold;
+  color: black;
+  background-color: grey;
+  margin-left: 3px;
+  padding: 0 5px;
+  line-height: 25px;
+  border-radius: 5px;
+}
