@@ -1,40 +1,51 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useEffect } from 'react'
-import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+// import { useState } from 'react'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import classes from './style.module.css'
 import { getApi } from '../../config/apiData'
 
-const AddFormPage = () => {
-  const [datas, setData] = useState([])
-  const [value, setValue] = useState({
-    title: '',
-    category: '',
-    photo: '',
-    paragraph: '',
-    user: ''
-  })
+const EditFormPage = () => {
+  const { id } = useParams()
   const navigate = useNavigate()
-  // const [photo,setPhoto] = useState(null)
+  // const [datas, setData] = useState([])
+  const [title, setTitle] = useState('')
+  const [category, setCategory] = useState('')
+  const [paragraph, setParagraph] = useState('')
+  const [user, setUser] = useState('')
+  // const [value, setValue] = useState({
+  //   title: '',
+  //   category: '',
+  //   photo: '',
+  //   paragraph: '',
+  //   user: ''
+  // })
 
-  useEffect(() => {
-    getApi()
-      .then((res) => res.json())
-      .then((data) => setData(data))
-  }, [])
-
-  const handleChange = (key) => (e) => {
-    // const value = key === 'photo' ? e.target.files[0] : e.target.value
-    setValue({
-      ...value,
-      [key]: e.target.value
+  const getEachApi = async () => {
+    return await fetch('http://localhost:8000/api/article/' + id, {
+      method: 'GET',
+      header: {
+        'Content-type': 'application/json'
+      }
     })
   }
 
-  // const handleChangePhoto = (e) =>{
-  //     const image = e.target.files[0]
-  //     setPhoto(image)
-  // }
+  useEffect(() => {
+    getEachApi()
+      .then((res) => res.json())
+      .then((data) => {
+        setTitle(data.title)
+        // setTitle({
+        //   ...data,
+        //   [key]:'title'
+        // })
+        setCategory(data.category)
+        setParagraph(data.paragraph)
+        setUser(data.user)
+      })
+    // console.log(datas)
+    //  console.log(eachId)
+  }, [])
 
   const handleSubmit = () => {
     // const form = new FormData()
@@ -44,21 +55,20 @@ const AddFormPage = () => {
     // form.append('photo', photo)
     // form.append('user', value.user)
 
-    fetch('http://localhost:8000/api/article', {
-      method: 'POST',
+    fetch('http://localhost:8000/api/article/' + id, {
+      method: 'PUT',
       headers: {
         'Content-type': 'application/json'
-        // 'Content-type' : 'multipart/form-data'
       },
       body: JSON.stringify({
-        title: value.title,
-        category: value.category,
-        paragraph: value.paragraph,
-        user: value.user
+        title: title,
+        category: category,
+        paragraph: paragraph,
+        user: user
       })
     })
-      .then((res) => res.json())
-      .then((data) => setData([...datas, data]))
+    // .then((res) => res.json())
+    // .then((data) => setData(data))
     navigate('/')
 
     getApi()
@@ -66,12 +76,12 @@ const AddFormPage = () => {
   const formSubmit = (e) => {
     e.preventDefault()
 
-    handleSubmit(handleChange(value))
+    handleSubmit()
   }
   return (
     <div className={classes.container}>
       <div className={classes.btn}>
-        <Link to="/" className={classes.link}>
+        <Link to={`/blog/${id}`} className={classes.link}>
           Go Back
         </Link>
       </div>
@@ -89,8 +99,10 @@ const AddFormPage = () => {
               name="title"
               placeholder="enter title"
               className={classes.input}
-              value={value.title}
-              onChange={handleChange('title')}
+              value={title}
+              onChange={(e) => {
+                setTitle(e.target.value)
+              }}
             />
           </div>
 
@@ -101,8 +113,10 @@ const AddFormPage = () => {
               name="category"
               placeholder="enter Category"
               className={classes.input}
-              value={value.category}
-              onChange={handleChange('category')}
+              value={category}
+              onChange={(e) => {
+                setCategory(e.target.value)
+              }}
             />
           </div>
 
@@ -118,8 +132,10 @@ const AddFormPage = () => {
               name="paragraph"
               placeholder="enter paragraph"
               className={classes.input}
-              value={value.paragraph}
-              onChange={handleChange('paragraph')}
+              value={paragraph}
+              onChange={(e) => {
+                setParagraph(e.target.value)
+              }}
             />
           </div>
 
@@ -130,8 +146,10 @@ const AddFormPage = () => {
               name="user"
               placeholder="enter username"
               className={classes.input}
-              value={value.user}
-              onChange={handleChange('user')}
+              value={user}
+              onChange={(e) => {
+                setUser(e.target.value)
+              }}
             />
           </div>
 
@@ -140,7 +158,9 @@ const AddFormPage = () => {
           </button>
         </form>
       </div>
+      {/* <input type="text" value={re} onChange={(e)=>setRe(e.target.value)}/> */}
+      {/* <span>{re}</span> */}
     </div>
   )
 }
-export default AddFormPage
+export default EditFormPage

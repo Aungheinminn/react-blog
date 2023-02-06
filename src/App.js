@@ -5,6 +5,7 @@ import { Route, Routes } from 'react-router-dom'
 import BlogPage from './Pages/BlogPage'
 import Test from './components/Test/Test'
 import AddFormPage from './Pages/AddFormPage/AddFormPage'
+import EditFormPage from './Pages/EditFormPage/EditFormPage'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/blog/:id" element={<BlogPage />} />
         <Route path="/test" element={<Test />} />
         <Route path="/add" element={<AddFormPage />} />
+        <Route path="/edit/:id" element={<EditFormPage />} />
       </Routes>
     </div>
   )

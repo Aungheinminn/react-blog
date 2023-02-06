@@ -41,8 +41,10 @@
   padding: 5px;
 }
 .author {
+  width: 148px;
   display: flex;
   align-items: center;
+  overflow-x: hidden;
 }
 .authorAvatar {
   width: 40px;

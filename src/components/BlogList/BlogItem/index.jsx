@@ -16,13 +16,6 @@ const BlogItem = ({
 
       <footer>
         <div className={classes.author}>
-          <img
-            className={classes.authorAvatar}
-            src={
-              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMIee3IzbiO_J9HxIWdzUTff0B2dn3noYOj3g6pIZsuw&s'
-            }
-            alt="authorAvatar"
-          />
           <div>
             <h6 className={classes.authorName}>{user}</h6>
             <p className={classes.createdAt}>{created_at}</p>

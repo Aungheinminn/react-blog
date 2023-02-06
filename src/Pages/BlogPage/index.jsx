@@ -10,6 +10,7 @@ import { getApi } from '../../config/apiData'
 const BlogPage = () => {
   const [datas, setData] = useState([])
   const { id } = useParams()
+  // const { delId} = useParams()
   const navigate = useNavigate()
 
   // const getApi = async () => {
@@ -35,7 +36,7 @@ const BlogPage = () => {
   }
   // useEffect(()=>{
   //   handleDelete()
-  // })
+  // },[])
 
   return (
     <div className={classes.main}>
@@ -43,14 +44,20 @@ const BlogPage = () => {
         <Link to="/" className={classes.link}>
           Go Back
         </Link>
-        <button className={classes.delete} onClick={handleDelete}>
+        <button className={classes.btn} onClick={handleDelete}>
           Delete
         </button>
+        <Link to={`/edit/${id}`} className={classes.btn}>
+          Edit
+        </Link>
       </div>
       {blog ? (
         <div className={classes.blogContainer}>
           <div className={classes.inner}>
-            <h1 className={classes.title}>{blog.title}</h1>
+            <div className={classes.wordBreak}>
+              <h1 className={classes.title}>{blog.title}</h1>
+            </div>
+
             <div className={classes.badges}>
               <p className={classes.category}>{blog.category}</p>
               {/* {blog.subCategory.map((item) => {
@@ -65,17 +72,11 @@ const BlogPage = () => {
             </div>
             <footer className={classes.footer}>
               <div className={classes.authorDiv}>
-                <img
-                  className={classes.avatar}
-                  src={
-                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMIee3IzbiO_J9HxIWdzUTff0B2dn3noYOj3g6pIZsuw&s'
-                  }
-                  alt="authorAvatar"
-                />
                 <p>{blog.user}</p>
               </div>
-
-              <b>{blog.created_at}</b>
+              <div className={classes.bcon}>
+                <b className={classes.b}>{blog.created_at}</b>
+              </div>
             </footer>
           </div>
         </div>
