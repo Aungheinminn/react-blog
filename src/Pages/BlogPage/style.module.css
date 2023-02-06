@@ -128,6 +128,9 @@
 @media (max-width: 320px) {
   .main {
     width: 320px;
+    /* display: flex; */
+    /* justify-content: start; */
+    /* margin-right: 55px; */
   }
   .btns {
     padding: 0 10px;
@@ -136,10 +139,11 @@
   .btn {
     font-size: 15px;
   }
-  .btn {
+  /* .btn {
     margin-left: 17px;
-  }
+  } */
   .blogContainer {
+    margin-right: 55px;
     padding: 0 10px;
   }
   .wordBreak {
@@ -150,6 +154,13 @@
   .content {
     width: 300px;
     word-wrap: break-word;
+  }
+  .content p {
+    font-size: 12px;
+    margin-left: 5px;
+  }
+  .cover {
+    margin-left: 5px;
   }
   .category {
     width: 70px;
