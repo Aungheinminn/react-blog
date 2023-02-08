@@ -3,7 +3,6 @@ import classes from './style.module.css'
 import BlogList from '../../components/BlogList'
 import Header from '../../components/Header'
 import SearchBar from '../../components/SearchBar'
-// import { blogList } from '../../config/data'
 import EmptyList from '../../components/BlogList/EmptyList'
 import { useEffect } from 'react'
 import { getApi } from '../../config/apiData'
@@ -24,12 +23,12 @@ const HomePage = () => {
   useEffect(() => {
     load()
   })
-
   useEffect(() => {
     getApi()
       .then((res) => res.json())
       .then((data) => setData(data))
   }, [])
+
   const [search, setSearch] = useState('')
 
   const handleSearchSubmit = (e) => {
@@ -46,9 +45,11 @@ const HomePage = () => {
 
   const handleClearSearch = () => {
     setSearch('')
-    // setData(datas)
-    getApi()
+
+    window.location.reload()
+    console.log(datas)
   }
+
   return (
     <div className={classes.container}>
       <NavBar />

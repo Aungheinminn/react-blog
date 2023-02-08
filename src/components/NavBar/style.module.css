@@ -31,6 +31,9 @@
 }
 
 @media (max-width: 768px) {
+  /* .container{
+    position: relative;
+  } */
   .xmarkDiv,
   .barDiv {
     display: block;
@@ -39,6 +42,10 @@
     color: white;
     font-size: 25px;
     margin: 10px 15px 0 0;
+    /* position: absolute;
+    top: 10%;
+    left: 1%; */
+    color: gray;
   }
   .div {
     position: fixed;
@@ -60,9 +67,11 @@
   }
   .p {
     font-size: 25px;
+    color: white;
   }
   .fas {
     font-size: 25px;
+    color: white;
   }
   .xmark {
     font-size: 25px;
@@ -78,7 +87,7 @@
     display: block;
   }
   .barDiv {
-    color: white;
+    color: gray;
     font-size: 15px;
     margin: 15px 15px 0 0;
   }
@@ -100,12 +109,12 @@
   .divAppear {
     transform: translateY(0px);
   }
-  .p {
-    font-size: 15px;
-  }
+  .p,
   .fas {
     font-size: 15px;
+    color: white;
   }
+
   .xmarkDiv {
     margin-right: 10px;
   }
