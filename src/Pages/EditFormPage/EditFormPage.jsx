@@ -8,6 +8,19 @@ import { getApi } from '../../config/apiData'
 const EditFormPage = () => {
   const { id } = useParams()
   const navigate = useNavigate()
+
+  const email = localStorage.getItem('email')
+  const password = localStorage.getItem('email')
+  const load = () => {
+    if (!email || !password) {
+      return navigate('/')
+    }
+  }
+
+  useEffect(() => {
+    load()
+  })
+
   // const [datas, setData] = useState([])
   const [title, setTitle] = useState('')
   const [category, setCategory] = useState('')
@@ -35,17 +48,14 @@ const EditFormPage = () => {
       .then((res) => res.json())
       .then((data) => {
         setTitle(data.title)
-        // setTitle({
-        //   ...data,
-        //   [key]:'title'
-        // })
+
         setCategory(data.category)
         setParagraph(data.paragraph)
         setUser(data.user)
       })
     // console.log(datas)
     //  console.log(eachId)
-  }, [])
+  })
 
   const handleSubmit = () => {
     // const form = new FormData()

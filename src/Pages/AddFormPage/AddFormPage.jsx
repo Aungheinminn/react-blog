@@ -7,6 +7,19 @@ import { getApi } from '../../config/apiData'
 
 const AddFormPage = () => {
   const [datas, setData] = useState([])
+
+  const email = localStorage.getItem('email')
+  const password = localStorage.getItem('email')
+  const load = () => {
+    if (!email || !password) {
+      return navigate('/')
+    }
+  }
+
+  useEffect(() => {
+    load()
+  })
+
   const [value, setValue] = useState({
     title: '',
     category: '',

@@ -20,6 +20,18 @@ const BlogPage = () => {
   // const { delId} = useParams()
   const navigate = useNavigate()
 
+  const email = localStorage.getItem('email')
+  const password = localStorage.getItem('email')
+  const load = () => {
+    if (!email || !password) {
+      return navigate('/')
+    }
+  }
+
+  useEffect(() => {
+    load()
+  })
+
   useEffect(() => {
     getApi()
       .then((res) => res.json())

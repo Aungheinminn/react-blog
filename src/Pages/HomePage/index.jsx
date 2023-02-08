@@ -8,9 +8,22 @@ import EmptyList from '../../components/BlogList/EmptyList'
 import { useEffect } from 'react'
 import { getApi } from '../../config/apiData'
 import NavBar from '../../components/NavBar/NavBar'
+import { useNavigate } from 'react-router-dom'
 
 const HomePage = () => {
   const [datas, setData] = useState([])
+  const navigate = useNavigate()
+  const email = localStorage.getItem('email')
+  const password = localStorage.getItem('email')
+  const load = () => {
+    if (!email || !password) {
+      return navigate('/')
+    }
+  }
+
+  useEffect(() => {
+    load()
+  })
 
   useEffect(() => {
     getApi()
