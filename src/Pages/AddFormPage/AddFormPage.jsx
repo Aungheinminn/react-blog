@@ -6,8 +6,6 @@ import classes from './style.module.css'
 import { getApi } from '../../config/apiData'
 
 const AddFormPage = () => {
-  const [datas, setData] = useState([])
-
   const email = localStorage.getItem('email')
   const password = localStorage.getItem('email')
   const load = () => {
@@ -19,6 +17,7 @@ const AddFormPage = () => {
   useEffect(() => {
     load()
   })
+  const [datas, setData] = useState([])
 
   const [value, setValue] = useState({
     title: '',
@@ -30,11 +29,11 @@ const AddFormPage = () => {
   const navigate = useNavigate()
   const [photo, setPhoto] = useState('')
 
-  useEffect(() => {
-    getApi()
-      .then((res) => res.json())
-      .then((data) => setData(data))
-  }, [])
+  // useEffect(() => {
+  //   getApi()
+  //     .then((res) => res.json())
+  //     .then((data) => setData(data))
+  // }, [])
 
   const handleChange = (key) => (e) => {
     // const value = key === 'photo' ? e.target.files[0] : e.target.value
@@ -71,7 +70,7 @@ const AddFormPage = () => {
       .then((data) => setData([...datas, data]))
     navigate('/home')
 
-    getApi()
+    // getApi()
   }
   const formSubmit = (e) => {
     e.preventDefault()

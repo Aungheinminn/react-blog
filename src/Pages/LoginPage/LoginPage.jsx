@@ -33,15 +33,20 @@ const LoginPage = () => {
       setPassword(password)
 
       return navigate('/home')
-    } else if (email !== adminEmail || password !== adminPassword) {
-      setDiv(!div)
+    } else if (
+      email === '' ||
+      password === '' ||
+      email !== adminEmail ||
+      password !== adminPassword
+    ) {
+      setDiv(true)
       setEmail('')
       setPassword('')
-      // console.log(div)
-    } else if (email !== ' ' || password !== '') {
-      // setNone(!div)
-      console.log(!div)
     }
+
+    // else if (email !== ' ' || password !== '') {
+    //   console.log(!div)
+    // }
   }
 
   // const getUserApi = async() =>{

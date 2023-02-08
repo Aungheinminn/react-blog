@@ -1,9 +1,7 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react'
-// import { useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import classes from './style.module.css'
-import { getApi } from '../../config/apiData'
 
 const EditFormPage = () => {
   const { id } = useParams()
@@ -48,14 +46,20 @@ const EditFormPage = () => {
       .then((res) => res.json())
       .then((data) => {
         setTitle(data.title)
-
+        // setData([...datas,data])
         setCategory(data.category)
         setParagraph(data.paragraph)
         setUser(data.user)
       })
     // console.log(datas)
     //  console.log(eachId)
-  })
+  }, [])
+  // const handleChange = (key) => (e) =>{
+  //   setValue({
+  //     ...value,
+  //     [key]: e.target.value
+  //   })
+  // }
 
   const handleSubmit = () => {
     // const form = new FormData()
@@ -80,8 +84,6 @@ const EditFormPage = () => {
     // .then((res) => res.json())
     // .then((data) => setData(data))
     navigate('/home')
-
-    getApi()
   }
   const formSubmit = (e) => {
     e.preventDefault()
@@ -113,6 +115,7 @@ const EditFormPage = () => {
               onChange={(e) => {
                 setTitle(e.target.value)
               }}
+              // onChange={handleChange('title')}
             />
           </div>
 
@@ -127,6 +130,7 @@ const EditFormPage = () => {
               onChange={(e) => {
                 setCategory(e.target.value)
               }}
+              // onChange={handleChange('category')}
             />
           </div>
 
@@ -146,6 +150,7 @@ const EditFormPage = () => {
               onChange={(e) => {
                 setParagraph(e.target.value)
               }}
+              // onChange={handleChange('paragraph')}
             />
           </div>
 
@@ -160,6 +165,7 @@ const EditFormPage = () => {
               onChange={(e) => {
                 setUser(e.target.value)
               }}
+              // onChange={handleChange('user')}
             />
           </div>
 
