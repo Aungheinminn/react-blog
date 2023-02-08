@@ -69,7 +69,7 @@ const EditFormPage = () => {
     })
     // .then((res) => res.json())
     // .then((data) => setData(data))
-    navigate('/')
+    navigate('/home')
 
     getApi()
   }

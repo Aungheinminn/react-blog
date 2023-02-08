@@ -15,7 +15,7 @@ const AddFormPage = () => {
     user: ''
   })
   const navigate = useNavigate()
-  // const [photo,setPhoto] = useState(null)
+  const [photo, setPhoto] = useState('')
 
   useEffect(() => {
     getApi()
@@ -29,27 +29,24 @@ const AddFormPage = () => {
       ...value,
       [key]: e.target.value
     })
+    console.log(value.title)
   }
 
-  // const handleChangePhoto = (e) =>{
-  //     const image = e.target.files[0]
-  //     setPhoto(image)
-  // }
+  const handleChangePhoto = (e) => {
+    const image = e.target.files[0]
+    setPhoto(image)
+    // console.log(image.name)
+    // console.log(photo)
+  }
 
-  const handleSubmit = () => {
-    // const form = new FormData()
-    // form.append('title', value.title)
-    // form.append('category', value.category)
-    // form.append('paragraph', value.paragraph)
-    // form.append('photo', photo)
-    // form.append('user', value.user)
-
+  const handleSubmit = async () => {
     fetch('http://localhost:8000/api/article', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json'
         // 'Content-type' : 'multipart/form-data'
       },
+      // body:form
       body: JSON.stringify({
         title: value.title,
         category: value.category,
@@ -59,7 +56,7 @@ const AddFormPage = () => {
     })
       .then((res) => res.json())
       .then((data) => setData([...datas, data]))
-    navigate('/')
+    navigate('/home')
 
     getApi()
   }
@@ -71,7 +68,7 @@ const AddFormPage = () => {
   return (
     <div className={classes.container}>
       <div className={classes.btn}>
-        <Link to="/" className={classes.link}>
+        <Link to="/home" className={classes.link}>
           Go Back
         </Link>
       </div>
@@ -106,10 +103,10 @@ const AddFormPage = () => {
             />
           </div>
 
-          {/* <div className={classes.slide}>
+          <div className={classes.slide}>
             <label className={classes.label}>Photo</label>
-            <input type="file" name="photo"  onChange={handleChangePhoto} />
-          </div> */}
+            <input type="file" name="photo" onChange={handleChangePhoto} />
+          </div>
 
           <div className={classes.slide}>
             <label className={classes.label}>Body</label>

@@ -7,6 +7,7 @@ import SearchBar from '../../components/SearchBar'
 import EmptyList from '../../components/BlogList/EmptyList'
 import { useEffect } from 'react'
 import { getApi } from '../../config/apiData'
+import NavBar from '../../components/NavBar/NavBar'
 
 const HomePage = () => {
   const [datas, setData] = useState([])
@@ -37,6 +38,7 @@ const HomePage = () => {
   }
   return (
     <div className={classes.container}>
+      <NavBar />
       <Header />
       <SearchBar
         value={search}

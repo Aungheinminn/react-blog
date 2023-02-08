@@ -6,17 +6,21 @@ import BlogPage from './Pages/BlogPage'
 import Test from './components/Test/Test'
 import AddFormPage from './Pages/AddFormPage/AddFormPage'
 import EditFormPage from './Pages/EditFormPage/EditFormPage'
+import LoginPage from './Pages/LoginPage/LoginPage'
 
 function App() {
   return (
-    <div className={classes.container}>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/blog/:id" element={<BlogPage />} />
-        <Route path="/test" element={<Test />} />
-        <Route path="/add" element={<AddFormPage />} />
-        <Route path="/edit/:id" element={<EditFormPage />} />
-      </Routes>
+    <div className={classes.main}>
+      <div className={classes.container}>
+        <Routes>
+          <Route path="/" element={<LoginPage />} />
+          <Route path="/home" element={<HomePage />} />
+          <Route path="/blog/:id" element={<BlogPage />} />
+          <Route path="/test" element={<Test />} />
+          <Route path="/add" element={<AddFormPage />} />
+          <Route path="/edit/:id" element={<EditFormPage />} />
+        </Routes>
+      </div>
     </div>
   )
 }

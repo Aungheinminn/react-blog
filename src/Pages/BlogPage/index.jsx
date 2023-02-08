@@ -6,18 +6,20 @@ import EmptyList from '../../components/BlogList/EmptyList'
 // import { blogList } from '../../config/data'
 import classes from './style.module.css'
 import { getApi } from '../../config/apiData'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons'
+import clsx from 'clsx'
 
 const BlogPage = () => {
   const [datas, setData] = useState([])
   const { id } = useParams()
+  const [btn, setBtn] = useState(false)
+  const btnn = clsx(classes.btns, {
+    [classes.btnsAppear]: btn
+  })
   // const { delId} = useParams()
   const navigate = useNavigate()
 
-  // const getApi = async () => {
-  //   const res = await fetch('http://localhost:8000/api/article')
-  //   const datas = await res.json()
-  //   setData(datas)
-  // }
   useEffect(() => {
     getApi()
       .then((res) => res.json())
@@ -31,7 +33,7 @@ const BlogPage = () => {
       method: 'DELETE'
     })
     // console.log(url)
-    navigate('/')
+    navigate('/home')
     getApi()
   }
   // useEffect(()=>{
@@ -40,8 +42,15 @@ const BlogPage = () => {
 
   return (
     <div className={classes.main}>
-      <div className={classes.btns}>
-        <Link to="/" className={classes.link}>
+      <div className={classes.bar}>
+        <FontAwesomeIcon
+          className={classes.faBar}
+          icon={faBars}
+          onClick={() => setBtn(!btn)}
+        />
+      </div>
+      <div className={btnn}>
+        <Link to="/home" className={classes.link}>
           Go Back
         </Link>
         <button className={classes.btn} onClick={handleDelete}>
@@ -50,6 +59,13 @@ const BlogPage = () => {
         <Link to={`/edit/${id}`} className={classes.btn}>
           Edit
         </Link>
+        <div className={classes.xmarkDiv}>
+          <FontAwesomeIcon
+            className={classes.xmark}
+            icon={faXmark}
+            onClick={() => setBtn(!btn)}
+          />
+        </div>
       </div>
       {blog ? (
         <div className={classes.blogContainer}>
@@ -64,7 +80,7 @@ const BlogPage = () => {
                 return <p className={classes.subCategory}>{item}</p>
               })} */}
             </div>
-            <div>
+            <div className={classes.coverDiv}>
               <img src={blog.photo} alt="cover" className={classes.cover} />
             </div>
             <div className={classes.content}>

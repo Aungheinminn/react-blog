@@ -1,0 +1,111 @@
+.container {
+  width: 100%;
+  height: 50px;
+  background-color: gray;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: flex-end;
+}
+.div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 10px;
+  color: white;
+}
+.p {
+  margin-right: 10px;
+  font-size: 20px;
+}
+.btn {
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+  margin-right: 10px;
+}
+.xmarkDiv,
+.barDiv {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .xmarkDiv,
+  .barDiv {
+    display: block;
+  }
+  .barDiv {
+    color: white;
+    font-size: 25px;
+    margin: 10px 15px 0 0;
+  }
+  .div {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 30px;
+    margin: 0;
+    background-color: gray;
+    transition: all 1s;
+    transform: translateY(-100vh);
+  }
+  .divAppear {
+    transform: translateY(0px);
+  }
+  .p {
+    font-size: 25px;
+  }
+  .fas {
+    font-size: 25px;
+  }
+  .xmark {
+    font-size: 25px;
+  }
+  .xmarkDiv {
+    margin-right: 10px;
+  }
+}
+
+@media (max-width: 320px) {
+  .xmarkDiv,
+  .barDiv {
+    display: block;
+  }
+  .barDiv {
+    color: white;
+    font-size: 15px;
+    margin: 15px 15px 0 0;
+  }
+  .div {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 30px;
+    margin: 0;
+    background-color: gray;
+    transition: all 1s;
+    transform: translateY(-100vh);
+  }
+  .divAppear {
+    transform: translateY(0px);
+  }
+  .p {
+    font-size: 15px;
+  }
+  .fas {
+    font-size: 15px;
+  }
+  .xmarkDiv {
+    margin-right: 10px;
+  }
+}
