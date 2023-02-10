@@ -53,6 +53,15 @@
     width: 400px;
   }
 }
+@media (max-width: 375px) {
+  .link {
+    font-size: 20px;
+  }
+  .formControl {
+    width: 300px;
+  }
+}
+
 @media (max-width: 320px) {
   .link {
     font-size: 15px;

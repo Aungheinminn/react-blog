@@ -58,6 +58,39 @@
   font-size: 20px;
   margin: 0 0 20px 35px;
 }
+@media (max-width: 375px) {
+  .error {
+    width: 200px;
+  }
+  .formControl {
+    width: 200px;
+    margin-top: 10px;
+  }
+  .label {
+    font-size: 15px;
+  }
+  .input,
+  .btn {
+    width: 90%;
+  }
+  .input {
+    border-bottom: 1px solid black;
+  }
+  .btn {
+    font-size: 15px;
+    /* width:  ; */
+    margin-left: 10px;
+  }
+  .divInput {
+    margin-left: 10px;
+  }
+  .error {
+    height: 50px;
+    line-height: 50px;
+    font-size: 15px;
+    margin-top: 100px;
+  }
+}
 
 @media (max-width: 320px) {
   .error {

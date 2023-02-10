@@ -59,8 +59,8 @@
     gap: 30px;
     margin: 0;
     background-color: gray;
-    transition: all 1s;
-    transform: translateY(-100vh);
+    transition: all 0.8s;
+    transform: translateY(-200vh);
   }
   .divAppear {
     transform: translateY(0px);
@@ -76,6 +76,45 @@
   .xmark {
     font-size: 25px;
   }
+  .xmarkDiv {
+    margin-right: 10px;
+  }
+}
+@media (max-width: 375px) {
+  .xmarkDiv,
+  .barDiv {
+    display: block;
+  }
+  .barDiv {
+    color: gray;
+    font-size: 15px;
+    margin: 15px 15px 0 0;
+  }
+  .div {
+    position: fixed;
+    top: 0;
+    left: 0%;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 30px;
+    margin: 0;
+    /* text-align: center; */
+    background-color: gray;
+    transition: all 0.8s;
+    transform: translateY(-200vh);
+  }
+  .divAppear {
+    transform: translateY(0px);
+  }
+  .p,
+  .fas {
+    font-size: 15px;
+    color: white;
+  }
+
   .xmarkDiv {
     margin-right: 10px;
   }
@@ -103,8 +142,8 @@
     gap: 30px;
     margin: 0;
     background-color: gray;
-    transition: all 1s;
-    transform: translateY(-100vh);
+    transition: all 0.8s;
+    transform: translateY(-200vh);
   }
   .divAppear {
     transform: translateY(0px);

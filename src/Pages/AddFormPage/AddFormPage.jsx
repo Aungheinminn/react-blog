@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import classes from './style.module.css'
-import { getApi } from '../../config/apiData'
+// import { getApi } from '../../config/apiData'
 
 const AddFormPage = () => {
   const email = localStorage.getItem('email')
@@ -19,15 +19,19 @@ const AddFormPage = () => {
   })
   const [datas, setData] = useState([])
 
-  const [value, setValue] = useState({
-    title: '',
-    category: '',
-    photo: '',
-    paragraph: '',
-    user: ''
-  })
+  const [title, setTitle] = useState('')
+  const [category, setCategory] = useState('')
+  const [paragraph, setParagraph] = useState('')
+  const [user, setUser] = useState('')
+  // const [value, setValue] = useState({
+  //   title: '',
+  //   category: '',
+  //   photo: '',
+  //   paragraph: '',
+  //   user: ''
+  // })
   const navigate = useNavigate()
-  const [photo, setPhoto] = useState('')
+  const [photo, setPhoto] = useState(null)
 
   // useEffect(() => {
   //   getApi()
@@ -35,36 +39,44 @@ const AddFormPage = () => {
   //     .then((data) => setData(data))
   // }, [])
 
-  const handleChange = (key) => (e) => {
-    // const value = key === 'photo' ? e.target.files[0] : e.target.value
-    setValue({
-      ...value,
-      [key]: e.target.value
-    })
-    console.log(value.title)
-  }
+  // const handleChange = (key) => (e) => {
+  //   // const value = key === 'photo' ? e.target.files[0] : e.target.value
+  //   setValue({
+  //     ...value,
+  //     [key]: e.target.value
+  //   })
+  //   console.log(value.title)
+  // }
 
-  const handleChangePhoto = (e) => {
-    const image = e.target.files[0]
-    setPhoto(image)
-    // console.log(image.name)
-    // console.log(photo)
-  }
+  // const handleChangePhoto = (e) => {
+  //   const image = e.target.files[0]
+  //   setPhoto(image)
+  //   console.log(image.name)
+  //   console.log(photo)
+  // }
 
   const handleSubmit = async () => {
+    let form = new FormData()
+    form.append('title', title)
+    form.append('category', category)
+    form.append('photo', photo)
+    form.append('paragraph', paragraph)
+    form.append('user', user)
     fetch('http://localhost:8000/api/article', {
       method: 'POST',
       headers: {
-        'Content-type': 'application/json'
+        // 'Content-type': 'application/json',
+        Accept: 'application/json',
+        type: 'formData'
         // 'Content-type' : 'multipart/form-data'
       },
-      // body:form
-      body: JSON.stringify({
-        title: value.title,
-        category: value.category,
-        paragraph: value.paragraph,
-        user: value.user
-      })
+      body: form
+      // body: JSON.stringify({
+      //   title: value.title,
+      //   category: value.category,
+      //   paragraph: value.paragraph,
+      //   user: value.user
+      // })
     })
       .then((res) => res.json())
       .then((data) => setData([...datas, data]))
@@ -75,7 +87,8 @@ const AddFormPage = () => {
   const formSubmit = (e) => {
     e.preventDefault()
 
-    handleSubmit(handleChange(value))
+    // handleSubmit(handleChange(value))
+    handleSubmit()
   }
   return (
     <div className={classes.container}>
@@ -98,8 +111,9 @@ const AddFormPage = () => {
               name="title"
               placeholder="enter title"
               className={classes.input}
-              value={value.title}
-              onChange={handleChange('title')}
+              value={title}
+              // onChange={handleChange('title')}
+              onChange={(e) => setTitle(e.target.value)}
             />
           </div>
 
@@ -110,14 +124,19 @@ const AddFormPage = () => {
               name="category"
               placeholder="enter Category"
               className={classes.input}
-              value={value.category}
-              onChange={handleChange('category')}
+              value={category}
+              // onChange={handleChange('category')}
+              onChange={(e) => setCategory(e.target.value)}
             />
           </div>
 
           <div className={classes.slide}>
             <label className={classes.label}>Photo</label>
-            <input type="file" name="photo" onChange={handleChangePhoto} />
+            <input
+              type="file"
+              name="photo"
+              onChange={(e) => setPhoto(e.target.files[0])}
+            />
           </div>
 
           <div className={classes.slide}>
@@ -127,8 +146,9 @@ const AddFormPage = () => {
               name="paragraph"
               placeholder="enter paragraph"
               className={classes.input}
-              value={value.paragraph}
-              onChange={handleChange('paragraph')}
+              value={paragraph}
+              // onChange={handleChange('paragraph')}
+              onChange={(e) => setParagraph(e.target.value)}
             />
           </div>
 
@@ -139,8 +159,9 @@ const AddFormPage = () => {
               name="user"
               placeholder="enter username"
               className={classes.input}
-              value={value.user}
-              onChange={handleChange('user')}
+              value={user}
+              // onChange={handleChange('user')}
+              onChange={(e) => setUser(e.target.value)}
             />
           </div>
 
