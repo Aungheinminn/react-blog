@@ -23,6 +23,8 @@ const AddFormPage = () => {
   const [category, setCategory] = useState('')
   const [paragraph, setParagraph] = useState('')
   const [user, setUser] = useState('')
+  const [photo, setPhoto] = useState(null)
+
   // const [value, setValue] = useState({
   //   title: '',
   //   category: '',
@@ -31,7 +33,6 @@ const AddFormPage = () => {
   //   user: ''
   // })
   const navigate = useNavigate()
-  const [photo, setPhoto] = useState(null)
 
   // useEffect(() => {
   //   getApi()

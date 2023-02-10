@@ -24,6 +24,7 @@ const EditFormPage = () => {
   const [category, setCategory] = useState('')
   const [paragraph, setParagraph] = useState('')
   const [user, setUser] = useState('')
+  const [photo, setPhoto] = useState(null)
   // const [value, setValue] = useState({
   //   title: '',
   //   category: '',
@@ -50,6 +51,8 @@ const EditFormPage = () => {
         setCategory(data.category)
         setParagraph(data.paragraph)
         setUser(data.user)
+        // setPhoto(data.photo)
+        console.log(data)
       })
     // console.log(datas)
     //  console.log(eachId)
@@ -60,26 +63,34 @@ const EditFormPage = () => {
   //     [key]: e.target.value
   //   })
   // }
+  const handleChange = (e) => {
+    setPhoto(e.target.files[0])
+    console.log(photo)
+  }
 
   const handleSubmit = () => {
-    // const form = new FormData()
-    // form.append('title', value.title)
-    // form.append('category', value.category)
-    // form.append('paragraph', value.paragraph)
-    // form.append('photo', photo)
-    // form.append('user', value.user)
+    const form = new FormData()
+    form.append('title', title)
+    form.append('category', category)
+    form.append('paragraph', paragraph)
+    form.append('photo', photo)
+    form.append('user', user)
 
     fetch('http://localhost:8000/api/article/' + id, {
       method: 'PUT',
       headers: {
-        'Content-type': 'application/json'
+        // 'Content-type': 'application/json'
+        Accept: 'application/json',
+        type: 'formData'
       },
-      body: JSON.stringify({
-        title: title,
-        category: category,
-        paragraph: paragraph,
-        user: user
-      })
+      body: form
+      // body: JSON.stringify({
+      //   title: title,
+      //   category: category,
+      //   paragraph: paragraph,
+      //   user: user,
+      //   photo: photo
+      // })
     })
     // .then((res) => res.json())
     // .then((data) => setData(data))
@@ -134,10 +145,15 @@ const EditFormPage = () => {
             />
           </div>
 
-          {/* <div className={classes.slide}>
+          <div className={classes.slide}>
             <label className={classes.label}>Photo</label>
-            <input type="file" name="photo"  onChange={handleChangePhoto} />
-          </div> */}
+            <input
+              type="file"
+              name="photo"
+              // onChange={(e)=>setPhoto(e.target.files[0])}
+              onChange={handleChange}
+            />
+          </div>
 
           <div className={classes.slide}>
             <label className={classes.label}>Body</label>

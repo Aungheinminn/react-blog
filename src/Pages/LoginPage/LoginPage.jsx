@@ -22,7 +22,7 @@ const LoginPage = () => {
     [classes.errAppear]: div
   })
 
-  const adminEmail = 'adam@gmail.com'
+  const adminEmail = 'blah@gmail.com'
   const adminPassword = 'blahblah'
   const onSubmit = (e) => {
     e.preventDefault()
