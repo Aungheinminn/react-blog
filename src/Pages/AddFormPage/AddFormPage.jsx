@@ -1,5 +1,6 @@
 import React from 'react'
 import { useEffect } from 'react'
+import { useRef } from 'react'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import classes from './style.module.css'
@@ -24,6 +25,7 @@ const AddFormPage = () => {
   const [paragraph, setParagraph] = useState('')
   const [user, setUser] = useState('')
   const [photo, setPhoto] = useState(null)
+  const ref = useRef()
 
   // const [value, setValue] = useState({
   //   title: '',
@@ -81,6 +83,7 @@ const AddFormPage = () => {
     })
       .then((res) => res.json())
       .then((data) => setData([...datas, data]))
+    ref.current.value = ''
     navigate('/home')
 
     // getApi()
@@ -136,21 +139,21 @@ const AddFormPage = () => {
             <input
               type="file"
               name="photo"
+              ref={ref}
               onChange={(e) => setPhoto(e.target.files[0])}
             />
           </div>
 
           <div className={classes.slide}>
             <label className={classes.label}>Body</label>
-            <input
+            <textarea
               type="text"
               name="paragraph"
               placeholder="enter paragraph"
               className={classes.input}
               value={paragraph}
               // onChange={handleChange('paragraph')}
-              onChange={(e) => setParagraph(e.target.value)}
-            />
+              onChange={(e) => setParagraph(e.target.value)}></textarea>
           </div>
 
           <div className={classes.slide}>

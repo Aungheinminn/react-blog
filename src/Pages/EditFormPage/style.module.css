@@ -52,6 +52,9 @@
   .formControl {
     width: 400px;
   }
+  .input {
+    width: 748px;
+  }
 }
 @media (max-width: 375px) {
   .link {
@@ -60,6 +63,9 @@
   .formControl {
     width: 300px;
   }
+  .input {
+    width: 360px;
+  }
 }
 
 @media (max-width: 320px) {
@@ -67,6 +73,9 @@
     font-size: 15px;
   }
   .formControl {
+    width: 300px;
+  }
+  .input {
     width: 300px;
   }
 }

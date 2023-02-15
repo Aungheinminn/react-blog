@@ -51,7 +51,7 @@ const EditFormPage = () => {
         setCategory(data.category)
         setParagraph(data.paragraph)
         setUser(data.user)
-        // setPhoto(data.photo)
+        setPhoto(data.photo)
         console.log(data)
       })
     // console.log(datas)
@@ -63,25 +63,28 @@ const EditFormPage = () => {
   //     [key]: e.target.value
   //   })
   // }
-  const handleChange = (e) => {
-    setPhoto(e.target.files[0])
-    console.log(photo)
-  }
+  // const handleChange = (e) => {
+  //   setPhoto(e.target.files[0])
+  //   console.log(photo)
+  // }
 
   const handleSubmit = () => {
-    const form = new FormData()
+    let form = new FormData()
     form.append('title', title)
     form.append('category', category)
     form.append('paragraph', paragraph)
     form.append('photo', photo)
     form.append('user', user)
+    form.append('_method', 'PUT')
+    // debugger
 
     fetch('http://localhost:8000/api/article/' + id, {
-      method: 'PUT',
+      method: 'POST',
       headers: {
         // 'Content-type': 'application/json'
         Accept: 'application/json',
         type: 'formData'
+        // mode:'no-cors'
       },
       body: form
       // body: JSON.stringify({
@@ -150,14 +153,14 @@ const EditFormPage = () => {
             <input
               type="file"
               name="photo"
-              // onChange={(e)=>setPhoto(e.target.files[0])}
-              onChange={handleChange}
+              onChange={(e) => setPhoto(e.target.files[0])}
+              // onChange={handleChange}
             />
           </div>
 
           <div className={classes.slide}>
             <label className={classes.label}>Body</label>
-            <input
+            <textarea
               type="text"
               name="paragraph"
               placeholder="enter paragraph"
@@ -167,7 +170,7 @@ const EditFormPage = () => {
                 setParagraph(e.target.value)
               }}
               // onChange={handleChange('paragraph')}
-            />
+            ></textarea>
           </div>
 
           <div className={classes.slide}>
@@ -179,6 +182,7 @@ const EditFormPage = () => {
               className={classes.input}
               value={user}
               onChange={(e) => {
+                console.log(user)
                 setUser(e.target.value)
               }}
               // onChange={handleChange('user')}
