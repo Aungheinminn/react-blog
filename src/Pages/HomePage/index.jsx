@@ -47,6 +47,7 @@ const HomePage = () => {
     setSearch('')
 
     window.location.reload()
+
     console.log(datas)
   }
 
@@ -57,7 +58,6 @@ const HomePage = () => {
       <SearchBar
         value={search}
         formSubmit={handleSearchSubmit}
-        // handleReset={handleBlogReset}
         handleSearch={(e) => setSearch(e.target.value)}
         clearSearch={handleClearSearch}
       />

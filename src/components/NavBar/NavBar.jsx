@@ -14,7 +14,6 @@ const NavBar = () => {
 
   let email = localStorage.getItem('email')
   let result = JSON.parse(email)
-  // email.replace(/['"]/g, '')
   const password = localStorage.getItem('password')
   const handleDelete = () => {
     console.log(email, password)

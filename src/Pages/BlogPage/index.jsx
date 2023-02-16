@@ -88,9 +88,6 @@ const BlogPage = () => {
 
             <div className={classes.badges}>
               <p className={classes.category}>{blog.category}</p>
-              {/* {blog.subCategory.map((item) => {
-                return <p className={classes.subCategory}>{item}</p>
-              })} */}
             </div>
             <div className={classes.coverDiv}>
               <img src={blog.photo} alt="cover" className={classes.cover} />

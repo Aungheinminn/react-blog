@@ -32,7 +32,6 @@
 .formControl {
   width: 500px;
   margin-top: 50px;
-  /* background-color: silver; */
   border: 2px solid black;
   border-radius: 5px;
 }
@@ -78,7 +77,6 @@
   }
   .btn {
     font-size: 15px;
-    /* width:  ; */
     margin-left: 10px;
   }
   .divInput {
@@ -112,7 +110,6 @@
   }
   .btn {
     font-size: 15px;
-    /* width:  ; */
     margin-left: 10px;
   }
   .divInput {

@@ -19,19 +19,11 @@ const EditFormPage = () => {
     load()
   })
 
-  // const [datas, setData] = useState([])
   const [title, setTitle] = useState('')
   const [category, setCategory] = useState('')
   const [paragraph, setParagraph] = useState('')
   const [user, setUser] = useState('')
   const [photo, setPhoto] = useState(null)
-  // const [value, setValue] = useState({
-  //   title: '',
-  //   category: '',
-  //   photo: '',
-  //   paragraph: '',
-  //   user: ''
-  // })
 
   const getEachApi = async () => {
     return await fetch('http://localhost:8000/api/article/' + id, {
@@ -47,27 +39,13 @@ const EditFormPage = () => {
       .then((res) => res.json())
       .then((data) => {
         setTitle(data.title)
-        // setData([...datas,data])
         setCategory(data.category)
         setParagraph(data.paragraph)
         setUser(data.user)
         setPhoto(data.photo)
         console.log(data)
       })
-    // console.log(datas)
-    //  console.log(eachId)
   }, [])
-  // const handleChange = (key) => (e) =>{
-  //   setValue({
-  //     ...value,
-  //     [key]: e.target.value
-  //   })
-  // }
-  // const handleChange = (e) => {
-  //   setPhoto(e.target.files[0])
-  //   console.log(photo)
-  // }
-
   const handleSubmit = () => {
     let form = new FormData()
     form.append('title', title)
@@ -81,22 +59,11 @@ const EditFormPage = () => {
     fetch('http://localhost:8000/api/article/' + id, {
       method: 'POST',
       headers: {
-        // 'Content-type': 'application/json'
         Accept: 'application/json',
         type: 'formData'
-        // mode:'no-cors'
       },
       body: form
-      // body: JSON.stringify({
-      //   title: title,
-      //   category: category,
-      //   paragraph: paragraph,
-      //   user: user,
-      //   photo: photo
-      // })
     })
-    // .then((res) => res.json())
-    // .then((data) => setData(data))
     navigate('/home')
   }
   const formSubmit = (e) => {
@@ -131,7 +98,6 @@ const EditFormPage = () => {
               onChange={(e) => {
                 setTitle(e.target.value)
               }}
-              // onChange={handleChange('title')}
             />
           </div>
 
@@ -148,7 +114,6 @@ const EditFormPage = () => {
               onChange={(e) => {
                 setCategory(e.target.value)
               }}
-              // onChange={handleChange('category')}
             />
           </div>
 
@@ -158,7 +123,6 @@ const EditFormPage = () => {
               type="file"
               name="photo"
               onChange={(e) => setPhoto(e.target.files[0])}
-              // onChange={handleChange}
             />
           </div>
 
@@ -173,9 +137,7 @@ const EditFormPage = () => {
               value={paragraph}
               onChange={(e) => {
                 setParagraph(e.target.value)
-              }}
-              // onChange={handleChange('paragraph')}
-            ></textarea>
+              }}></textarea>
           </div>
 
           <div className={classes.slide}>
@@ -191,7 +153,6 @@ const EditFormPage = () => {
                 console.log(user)
                 setUser(e.target.value)
               }}
-              // onChange={handleChange('user')}
             />
           </div>
 
@@ -200,8 +161,6 @@ const EditFormPage = () => {
           </button>
         </form>
       </div>
-      {/* <input type="text" value={re} onChange={(e)=>setRe(e.target.value)}/> */}
-      {/* <span>{re}</span> */}
     </div>
   )
 }
