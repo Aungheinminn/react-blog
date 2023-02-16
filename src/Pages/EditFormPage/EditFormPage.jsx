@@ -123,6 +123,8 @@ const EditFormPage = () => {
             <input
               type="text"
               name="title"
+              autoFocus
+              autoComplete="off"
               placeholder="enter title"
               className={classes.input}
               value={title}
@@ -138,6 +140,8 @@ const EditFormPage = () => {
             <input
               type="text"
               name="category"
+              autoComplete="off"
+              autoCapitalize="on"
               placeholder="enter Category"
               className={classes.input}
               value={category}
@@ -163,6 +167,7 @@ const EditFormPage = () => {
             <textarea
               type="text"
               name="paragraph"
+              autoComplete="off"
               placeholder="enter paragraph"
               className={classes.input}
               value={paragraph}
@@ -178,6 +183,7 @@ const EditFormPage = () => {
             <input
               type="text"
               name="user"
+              autoComplete="off"
               placeholder="enter username"
               className={classes.input}
               value={user}

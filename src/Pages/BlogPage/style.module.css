@@ -61,6 +61,7 @@
 .cover {
   width: 600px;
   height: 300px;
+  object-fit: cover;
   border-radius: 5px;
 }
 .content {
@@ -213,7 +214,7 @@
     margin-left: 10px;
   }
 }
-@media (max-width: 374px) {
+@media (max-width: 378px) {
   * {
     margin: 0;
     padding: 0;

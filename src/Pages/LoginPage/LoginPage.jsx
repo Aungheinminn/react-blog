@@ -65,6 +65,8 @@ const LoginPage = () => {
             <label className={classes.label}>Email</label>
             <input
               type="email"
+              autoFocus
+              autoComplete="off"
               className={classes.input}
               value={email}
               placeholder="Email"
@@ -77,6 +79,7 @@ const LoginPage = () => {
             <label className={classes.label}>Password</label>
             <input
               type="password"
+              autoComplete="off"
               className={classes.input}
               value={password}
               placeholder="Password"

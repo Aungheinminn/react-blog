@@ -112,6 +112,8 @@ const AddFormPage = () => {
             <label className={classes.label}>Title</label>
             <input
               type="text"
+              autoFocus
+              autoComplete="off"
               name="title"
               placeholder="enter title"
               className={classes.input}
@@ -126,6 +128,8 @@ const AddFormPage = () => {
             <input
               type="text"
               name="category"
+              autoCapitalize="on"
+              autoComplete="off"
               placeholder="enter Category"
               className={classes.input}
               value={category}
@@ -149,6 +153,7 @@ const AddFormPage = () => {
             <textarea
               type="text"
               name="paragraph"
+              autoComplete="off"
               placeholder="enter paragraph"
               className={classes.input}
               value={paragraph}
@@ -161,6 +166,7 @@ const AddFormPage = () => {
             <input
               type="text"
               name="user"
+              autoComplete="off"
               placeholder="enter username"
               className={classes.input}
               value={user}
